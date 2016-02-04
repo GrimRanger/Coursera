@@ -38,7 +38,9 @@ def load():
    
     tv = TfidfVectorizer()
     X_transformed = tv.fit_transform(X)
-   
+    idf = tv.idf_
+    print dict(zip(tv.get_feature_names(), idf))
+    #print tv.get_feature_names()
     return X_transformed, y, length
 
 def learn(X,y, c_value):
@@ -49,11 +51,11 @@ def learn(X,y, c_value):
 
 def test_SVC():
     X, y, length = load()
-    c = find_best_param_c_by_cross_validation(X, y, length)
-    clf = learn(X,y,c)
-    result = clf.coef_
-    print np.argmax(result)
-    print result
+    #c = find_best_param_c_by_cross_validation(X, y, length)
+    #clf = learn(X,y,c)
+    #result = clf.coef_
+    #print np.argmax(result)
+    #print result
     
 if __name__ == "__main__":
    test_SVC()
